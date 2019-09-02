@@ -12,4 +12,4 @@ If you need a editor recommendation, VS Code is what I (Danielle) am using, and 
 
 We need Node.js, which you can get from [here](https://nodejs.org/en/download/) (also possible to download from the command line).
 
-Finally (go through the Electron getting started tutorial)[https://electronjs.org/docs/tutorial/first-app] to download and check out Electron. 
+Finally [go through the Electron getting started tutorial](https://electronjs.org/docs/tutorial/first-app) to download and check out Electron. 
