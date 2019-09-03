@@ -19,5 +19,10 @@
   "homepage": "https://github.com/JumboCode/Ocean-Alliance#readme",
   "devDependencies": {
     "electron": "^6.0.7"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0"
   }
 }
