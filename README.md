@@ -16,6 +16,7 @@ Currently this includes:
 2. Bootstrap
 3. jQuery
 4. Popper.js (a Bootstrap dependency)
+
 These are just some nice libraries I've been using when doing websites stuff. If you have preferred libraries that you want, we can talk about it; I'm a bit OOTL on what js frameworks that the cool kids are using these days.
 
 
