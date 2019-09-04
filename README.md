@@ -22,4 +22,3 @@ These are just some nice libraries I've been using when doing websites stuff. If
 
 
 This boilerplate code implements everything from the [Electron getting started tutorial](https://electronjs.org/docs/tutorial/first-app). To run it, do `npm start`.
-
