@@ -23,6 +23,8 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
+    "node-pre-gyp": "^0.13.0",
+    "opencv": "^6.2.0",
     "popper.js": "^1.15.0"
   }
 }
