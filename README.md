@@ -1,5 +1,11 @@
-    # Ocean-Alliance
+# Ocean-Alliance
 JumboCode 2019-2020 project for Ocean Alliance, led by Danielle Lan.
+
+# Team Members
+`Add yourself here by creating a new branch, make changes, then pull to practice git`
+
+- Danielle Lan, PM, Should've gone to culinary school
+- [Name], [Role], [Something about you]
 
 # Environment setup
 We will use Electron for this project, which is built upon Node.js.
@@ -7,14 +13,6 @@ We will use Electron for this project, which is built upon Node.js.
 If you are on Windows and love working in WSL (Windows Subsystem for Linux), you should just develop in Windows; trust me, I've tried to make it work.
 
 If you need a editor recommendation, VS Code is what I (Danielle) am using, and it works fairly well with JavaScript.
-
-<!-- Omitted because opencv4nodejs installs opencv for us already
-Before everything else, install OpenCV 4. I promise this is the worst part of the setup process; it's only going to be easier after this. Look up installation instructions for OpenCV4 on your OS and follow along. You'd also want to get opencv_contrib, which contains additional stuff not included in stock opencv.
-* Windows: 
-  * https://docs.opencv.org/master/d3/d52/tutorial_windows_install.html
-  * Go to the part that says "Installation by Using git-bash and cmake"
-* Linux:
-  * If npm install opencv fails later, check out this github issue https://github.com/peterbraden/node-opencv/issues/325 -->
 
 Create a folder where you will work on the code. Initialize git there, and pull from this repo. If you are working on MacOS or Windows, you might want to try out sourcetree, a graphical git interface. Some PMs swear by it, and claimed that they never needed to learn git commands because of it.
 
