@@ -1,4 +1,4 @@
-# Ocean-Alliance
+    # Ocean-Alliance
 JumboCode 2019-2020 project for Ocean Alliance, led by Danielle Lan.
 
 # Environment setup
@@ -8,7 +8,7 @@ If you are on Windows and love working in WSL (Windows Subsystem for Linux), you
 
 If you need a editor recommendation, VS Code is what I (Danielle) am using, and it works fairly well with JavaScript.
 
-<!-- # TODO: double check if opencv4nodejs already has opencv installed
+<!-- Omitted because opencv4nodejs installs opencv for us already
 Before everything else, install OpenCV 4. I promise this is the worst part of the setup process; it's only going to be easier after this. Look up installation instructions for OpenCV4 on your OS and follow along. You'd also want to get opencv_contrib, which contains additional stuff not included in stock opencv.
 * Windows: 
   * https://docs.opencv.org/master/d3/d52/tutorial_windows_install.html
@@ -19,6 +19,8 @@ Before everything else, install OpenCV 4. I promise this is the worst part of th
 Create a folder where you will work on the code. Initialize git there, and pull from this repo. If you are working on MacOS or Windows, you might want to try out sourcetree, a graphical git interface. Some PMs swear by it, and claimed that they never needed to learn git commands because of it.
 
 Go through the [environment setup page for Electron](https://electronjs.org/docs/tutorial/development-environment), to set up Node.js and NPM.
+
+If you are on Windows, run `npm install --global windows-build-tools` from an elevated terminal. This installs the build tools required for opencv. If you don't already have cmake, install that too; [binaries here](https://cmake.org/download/). If `npm install` complains not finding Visual Studio later, just reboot.
 
 Install the packages used in this boilerplate (including Electron) by doing `npm install`. This downloads all packages listed in `package.json`.
 Currently this includes:
@@ -31,3 +33,11 @@ Currently this includes:
 These are just some nice libraries I've been using when doing websites stuff. If you have preferred libraries that you want, we can talk about it; I'm a bit OOTL on what js frameworks that the cool kids are using these days.
 
 This boilerplate code implements everything from the [Electron getting started tutorial](https://electronjs.org/docs/tutorial/first-app). To run it, do `npm start`. The OpenCV test code are snippets from https://www.npmjs.com/package/opencv4nodejs#quick-start.
+
+# Coding Styles
+`npm test` checks if the code passes the linters, and `npm fix` attempts to fix some javascript violations automatically.
+
+This project tries to conform with the Standard JS style, with details [here](https://standardjs.com). [Install editor plugins to make your life easier](https://standardjs.com/#are-there-text-editor-plugins).
+
+[HTMLHint](https://github.com/htmlhint/HTMLHint) is used as the linter for HTML. It also has plugins to editors (for VS Code at least).
+

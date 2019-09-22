@@ -4,7 +4,7 @@
   "description": "JumboCode 2019 Ocean Alliance project",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "standard && standard --plugin html *.html && htmlhint *.html",
     "install": "npm run electron-rebuild",
     "start": "electron .",
     "electron-rebuild": "electron-rebuild -w opencv4nodejs"
@@ -20,14 +20,22 @@
   },
   "homepage": "https://github.com/JumboCode/Ocean-Alliance#readme",
   "devDependencies": {
-    "electron": "^6.0.7",
-    "electron-rebuild": "^1.8.6"
+    "electron": "^6.0.10",
+    "electron-rebuild": "^1.8.6",
+    "eslint-plugin-markdown": "^1.0.0",
+    "htmlhint": "^0.11.0",
+    "pre-commit": "^1.2.2",
+    "standard": "^14.3.1"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "eslint-plugin-html": "^6.0.0",
     "jquery": "^3.4.1",
     "node-pre-gyp": "^0.13.0",
     "opencv4nodejs": "^5.2.0",
     "popper.js": "^1.15.0"
-  }
+  },
+  "pre-commit": [
+    "test"
+  ]
 }
