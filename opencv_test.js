@@ -1,7 +1,7 @@
 // OpenCV test code, from
 // https://www.npmjs.com/package/opencv4nodejs#quick-start
 var cv = require('opencv4nodejs')
-const $ = require('jquery')
+// const $ = require('jquery')
 
 const pngPrefix = 'data:image/jpeg;base64,'
 const jpgPrefix = 'data:image/png;base64,'
