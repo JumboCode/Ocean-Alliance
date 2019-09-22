@@ -5,7 +5,9 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "install": "npm run electron-rebuild",
+    "start": "electron .",
+    "electron-rebuild": "electron-rebuild -w opencv4nodejs"
   },
   "repository": {
     "type": "git",
@@ -18,13 +20,14 @@
   },
   "homepage": "https://github.com/JumboCode/Ocean-Alliance#readme",
   "devDependencies": {
-    "electron": "^6.0.7"
+    "electron": "^6.0.7",
+    "electron-rebuild": "^1.8.6"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
     "node-pre-gyp": "^0.13.0",
-    "opencv": "^6.2.0",
+    "opencv4nodejs": "^5.2.0",
     "popper.js": "^1.15.0"
   }
 }
