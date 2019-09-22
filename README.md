@@ -40,5 +40,5 @@ This project tries to conform with the Standard JS style, with details [here](ht
 [HTMLHint](https://github.com/htmlhint/HTMLHint) is used as the linter for HTML. It also has plugins to editors (for VS Code at least).
 
 # Other Links
-[Design Doc](https://docs.google.com/document/d/1I9zuQFTHVh6-9p7bcbBr22b-NnZ1on00LuRBD89p7x4/edit?usp=sharing)
-[Files](https://www.dropbox.com/sh/lo8qht7d1kfq35z/AABrX-oU-obZyjvL28C9L02Ea?dl=0)
+- [Design Doc](https://docs.google.com/document/d/1I9zuQFTHVh6-9p7bcbBr22b-NnZ1on00LuRBD89p7x4/edit?usp=sharing)
+- [Files](https://www.dropbox.com/sh/lo8qht7d1kfq35z/AABrX-oU-obZyjvL28C9L02Ea?dl=0)
