@@ -5,7 +5,7 @@ JumboCode 2019-2020 project for Ocean Alliance, led by Danielle Lan.
 `Add yourself here by creating a new branch, make changes, then pull to practice git`
 
 - Danielle Lan, PM, Senior, Should've gone to culinary school
-- [Name], [Role], [Year], [Something about you]
+- Josefine Tijssen, Programmer, Junior, Not ready for interview season
 
 # Environment setup
 We will use Electron for this project, which is built upon Node.js.
