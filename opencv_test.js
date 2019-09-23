@@ -1,7 +1,8 @@
+/* global FileReader, ImageData */
 // OpenCV test code, from
 // https://www.npmjs.com/package/opencv4nodejs#quick-start
 var cv = require('opencv4nodejs')
-const $ = require('jquery')
+// const $ = require('jquery')
 
 const pngPrefix = 'data:image/jpeg;base64,'
 const jpgPrefix = 'data:image/png;base64,'
@@ -16,7 +17,7 @@ function renderImage (img, canvas) {
   var matRGBA = img.channels === 1 ? img.cvtColor(cv.COLOR_GRAY2RGBA) : img.cvtColor(cv.COLOR_BGR2RGBA)
   canvas.height = img.rows
   canvas.width = img.cols
-  var imgData = new cv.ImageData(
+  var imgData = new ImageData(
     new Uint8ClampedArray(matRGBA.getData()),
     img.cols,
     img.rows
@@ -25,16 +26,19 @@ function renderImage (img, canvas) {
   ctx.putImageData(imgData, 0, 0)
 }
 
-$('#input').onchange = function (e) {
+function uploadFile (e) {
+  console.log('registered file input change')
   var selectedFile = e.target.files[0]
 
-  var reader = new cv.FileReader()
+  var reader = new FileReader()
   reader.onload = function (re) {
     var selectedImgBGR = decodeImageFromBase64(re.target.result).resizeToMax(500)
     renderImage(
       selectedImgBGR,
-      $('#input')
+      document.getElementById('inputcanvas')
     )
   }
   reader.readAsDataURL(selectedFile)
 }
+
+document.getElementById('fileinput').addEventListener('change', uploadFile)
