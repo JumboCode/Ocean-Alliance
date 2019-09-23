@@ -14,8 +14,6 @@
         require('popper.js')
         require('bootstrap')
     </script>
-    <script src="opencv_test.js" type="application/javascript"></script>
-
 </head>
 
 <body>
@@ -41,15 +39,16 @@
         <div class="centered-container">
             <label class="margin-right">
                 Pick a .png or .jpg file:
-                <input type="file" onchange="onImageSelected(event)" />
+                <input id="fileinput" type="file"/>
             </label>
         </div>
     </section>
     <section class="centered-container">
         <div style="max-width: 550px">
-            <canvas id="input"></canvas>
+            <canvas id="inputcanvas"></canvas>
         </div>           
     </section>
+    <script src="opencv_test.js" type="application/javascript"></script>
 </body>
 
 </html>
