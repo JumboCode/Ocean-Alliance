@@ -7,6 +7,7 @@ JumboCode 2019-2020 project for Ocean Alliance, led by Danielle Lan.
 - Danielle Lan, PM, Senior, Should've gone to culinary school
 - Jo Tijssen, Programmer, Junior, Not ready for interview season
 - Mohsin Rizvi, Programmer, Senior, My favorite whale is the humpback whale
+- Elizabeth Frieden, Programmer, Freshman, My favorite type of chocolate is 90% dark chocolate
 
 # Environment setup
 We will use Electron for this project, which is built upon Node.js.
