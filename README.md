@@ -6,6 +6,7 @@ JumboCode 2019-2020 project for Ocean Alliance, led by Danielle Lan.
 
 - Danielle Lan, PM, Senior, Should've gone to culinary school
 - Jo Tijssen, Programmer, Junior, Not ready for interview season
+- Erica Zhang, programmer, Postbacc, how many times can you say definition and expression in one sentence?
 - Mohsin Rizvi, Programmer, Senior, My favorite whale is the humpback whale
 - Elizabeth Frieden, Programmer, Freshman, My favorite type of chocolate is 90% dark chocolate
 
