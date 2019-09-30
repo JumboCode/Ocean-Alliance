@@ -1,5 +1,6 @@
 # Ocean-Alliance
 JumboCode 2019-2020 project for Ocean Alliance, led by Danielle Lan.
+See tickets here: https://trello.com/b/ZgCHVH4n/ticket
 
 # Team Members
 `Add yourself here by creating a new branch, make changes, then pull to practice git`
