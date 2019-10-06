@@ -1,4 +1,6 @@
 const { app, BrowserWindow } = require('electron')
+const JobQueue = require('./js/jobqueue.js')
+let jobQueue = new JobQueue()
 
 // global reference to the window object
 let win
@@ -43,3 +45,4 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
