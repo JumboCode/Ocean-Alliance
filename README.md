@@ -11,7 +11,10 @@ See tickets here: https://trello.com/b/ZgCHVH4n/ticket
 - Mohsin Rizvi, Programmer, Senior, My favorite whale is the humpback whale
 - Elizabeth Frieden, Programmer, Freshman, My favorite type of chocolate is 90% dark chocolate
 
-# Environment setup
+# Environment Setup
+We are moving away from pure JS and adding in some Python. Windows users should use WSL. Check Trello for specific steps to set up the new environments.
+
+# Environment setup (Outdated Info)
 We will use Electron for this project, which is built upon Node.js.
 
 If you are on Windows and love working in WSL (Windows Subsystem for Linux), you should just develop in Windows; trust me, I've tried to make it work.
