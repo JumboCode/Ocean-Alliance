@@ -1,7 +1,11 @@
 const { app, BrowserWindow } = require('electron')
+const path = require('path')
 
 // global reference to the window object
 let win
+// global reference to forked python process and running port
+let pyProc = null
+let pyPort = null
 
 function createWindow () {
   let win = new BrowserWindow({
@@ -41,5 +45,55 @@ app.on('activate', () => {
   }
 })
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
+/*************************************************************
+ * py process, code extracted from
+ * https://github.com/fyears/electron-python-example
+ *************************************************************/
+const PY_DIST_FOLDER = 'python_backenddist'
+const PY_FOLDER = 'python_backend'
+const PY_MODULE = 'api' // without .py suffix
+
+const guessPackaged = () => {
+  const fullPath = path.join(__dirname, PY_DIST_FOLDER)
+  return require('fs').existsSync(fullPath)
+}
+
+const getScriptPath = () => {
+  if (!guessPackaged()) {
+    return path.join(__dirname, PY_FOLDER, PY_MODULE + '.py')
+  }
+  if (process.platform === 'win32') {
+    return path.join(__dirname, PY_DIST_FOLDER, PY_MODULE, PY_MODULE + '.exe')
+  }
+  return path.join(__dirname, PY_DIST_FOLDER, PY_MODULE, PY_MODULE)
+}
+
+const selectPort = () => {
+  pyPort = 9105
+  return pyPort
+}
+
+const createPyProc = () => {
+  console.log('creating python child process')
+  const script = getScriptPath()
+  const port = '' + selectPort()
+
+  if (guessPackaged()) {
+    pyProc = require('child_process').execFile(script, [port])
+  } else {
+    pyProc = require('child_process').spawn('python', [script, port], { stdio: [process.stdin, process.stdout, process.stderr] })
+  }
+
+  if (pyProc != null) {
+    console.log('child process success on port ' + port)
+  }
+}
+
+const exitPyProc = () => {
+  pyProc.kill()
+  pyProc = null
+  pyPort = null
+}
+
+app.on('ready', createPyProc)
+app.on('will-quit', exitPyProc)

@@ -6,3 +6,4 @@ Dockerfile
 venv
 npm-debug.log*
 .vagrant
+.vscode
