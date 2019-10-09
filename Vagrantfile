@@ -77,6 +77,7 @@ Vagrant.configure("2") do |config|
   config.ssh.extra_args = ["-t", "cd /vagrant; bash --login"]
   
   # remember to setup environment variable https://superuser.com/a/392263
+  # as well as running electron rebuild
 
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
@@ -84,6 +85,8 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     apt-get -y update
     apt-get -y upgrade
+
+    apt-get -y install cmake
 
     #x11 forwarding
     apt-get -y install xauth
