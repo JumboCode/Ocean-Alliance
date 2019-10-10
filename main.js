@@ -1,4 +1,6 @@
 const { ipcMain, dialog, app, BrowserWindow } = require('electron')
+const JobQueue = require('./js/jobqueue.js')
+let jobQueue = new JobQueue()
 
 // global reference to the window object
 let win
