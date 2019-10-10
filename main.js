@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { ipcMain, dialog, app, BrowserWindow } = require('electron')
 const JobQueue = require('./js/jobqueue.js')
 let jobQueue = new JobQueue()
 
@@ -45,4 +45,12 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+function selectFiles (callbackfn) {
+  dialog.showOpenDialog(win, { properties: ['openFile', 'openDirectory', 'multiSelections'] }, (files) => {
+    if (typeof callbackfn === 'function' && callbackfn()) {
+      callbackfn(files)
+    }
+  })
+}
 
+ipcMain.on('openFile', selectFiles)
