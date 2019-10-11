@@ -81,7 +81,7 @@ const createPyProc = () => {
   if (guessPackaged()) {
     pyProc = require('child_process').execFile(script, [port])
   } else {
-    pyProc = require('child_process').spawn('python', [script, port], { stdio: [process.stdin, process.stdout, process.stderr] })
+    pyProc = require('child_process').spawn('python3', [script, port], { stdio: [process.stdin, process.stdout, process.stderr] })
   }
 
   if (pyProc != null) {

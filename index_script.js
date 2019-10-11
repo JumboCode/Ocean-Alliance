@@ -24,7 +24,7 @@ $('#pingPython').click(function () {
       console.log(error.stack)
     } else {
       console.log('recieved result ' + res)
-      $('#pingResult').text(res)
+      $('#pingResponse').text(res)
     }
   })
 })

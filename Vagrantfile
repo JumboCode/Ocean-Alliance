@@ -10,6 +10,9 @@ Vagrant.configure("2") do |config|
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
 
+  config.vm.synced_folder ".", "/home/vagrant/WhaleApp/"
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "ubuntu/bionic64"
@@ -74,7 +77,11 @@ Vagrant.configure("2") do |config|
   # config.vm.provision :shell, inline: "mkdir /home/vagrant/www"
   # config.vm.provision :shell, inline: "mount -t vboxsf -o uid=`id -u vagrant`,gid=`getent group vagrant | cut -d: -f3` > www /home/vagrant/www", run: "always"
   
-  config.ssh.extra_args = ["-t", "cd /vagrant; bash --login"]
+  # #hopefully this exculdes node_modules from syncing
+  # #yup doesnt work
+  # config.vm.synced_folder "./", "/vagrant", type: "rsync", rsync_auto: true, rsync_exclude: ['node_modules*, .vscode']
+
+  config.ssh.extra_args = ["-t", "cd /home/vagrant/WhaleApp/; bash --login"]
   
   # remember to setup environment variable https://superuser.com/a/392263
   # as well as running electron rebuild
@@ -85,30 +92,32 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     apt-get -y update
     apt-get -y upgrade
-
-    apt-get -y install cmake
-
-    #x11 forwarding
-    apt-get -y install xauth
-    apt-get -y install x11-apps
-
-    apt-get -y install python3
-    apt-get -y install python3-pip
     
-    apt-get -y install emacs
+    apt-get -y install cmake build-essential checkinstall libssl-dev emacs gcc g++ make pkg-config libzmq3-dev libnss3 libxss1
     
+    #nodejs
+    curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
     apt-get -y install nodejs
-    apt-get -y install npm
-    apt-get -y install build-essential
     
-    apt-get -y install libzmq3-dev
-    apt-get -y install libnss3
-    apt-get -y install libxss1
+    #x11 forwarding
+    apt-get -y install xauth x11-apps
+    echo "export DISPLAY=192.168.56.1:0.0" >> /home/vagrant/.bashrc 
+    
+    apt-get -y install python3 python3-pip
+    
+    #prebuilt zmq
+    echo "deb https://download.opensuse.org/repositories/network:/messaging:/zeromq:/release-draft/xUbuntu_18.04/ ./" >> /etc/apt/sources.list
+    wget https://download.opensuse.org/repositories/network:/messaging:/zeromq:/release-draft/xUbuntu_18.04/Release.key -O- | sudo apt-key add
 
-    
-    cd /vagrant
-    pip3 install -r /vagrant/requirements.txt
-    npm install --force
+
+    #symlink for node_modules
+    mkdir -p /home/vagrant/dependencies/node_modules
+    cd /home/vagrant/WhaleApp/
+    rm -r node_modules
+    ln -s /home/vagrant/dependencies/node_modules
+  
+    pip3 install -r requirements.txt
+    npm install
 
     ./node_modules/.bin/electron-rebuild
     
