@@ -13,7 +13,7 @@ Steps
 to the virtual machine automatically.
 
 # Ocean-Alliance
-JumboCode 2019-2020 project for Ocean Alliance, led by Danielle Lan.
+JumboCode 2019-2020 project for Ocean Alliance.
 See tickets here: https://trello.com/b/ZgCHVH4n/ticket
 
 # Team Members
