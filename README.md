@@ -1,3 +1,17 @@
+# Vagrant Instructions
+Download the following:
+- VirtualBox
+- Vagrant
+- X11 Server for your system (xMing for Windows, xQuartz for MacOs); Search X11 forwarding for [system] for instructions.
+
+Steps
+1. Open project directory. Windows: run PowerShell as administrator and [follow steps 1, 2, and maybe 3 from here (reboot required)](https://www.prolificinteractive.com/2015/01/21/getting-vagrant-nodejs-windows-play-well-together/).
+2. Run `vagrant up` and wait (takes around 10-20 minutes)
+3. When Vagrant is all set up, do `vagrant ssh` to enter the virtual machine
+4. Make sure that your xMing/xQuartz is running
+5. Run commands like `npm start` from the ssh-ed terminal, but you can edit files locally. Changes are synced
+to the virtual machine automatically.
+
 # Ocean-Alliance
 JumboCode 2019-2020 project for Ocean Alliance, led by Danielle Lan.
 See tickets here: https://trello.com/b/ZgCHVH4n/ticket

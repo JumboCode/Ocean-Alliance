@@ -14,7 +14,6 @@
         require('popper.js')
         require('bootstrap')
     </script>
-    <script src="view.js"></script>
 </head>
 
 <body>
@@ -33,23 +32,27 @@
     </script>.
 
     <header class="centered-text">
-        <h3>opencv4nodejs electron example</h3>
-    </header>
-    
-    <section>
+        <h3>Ping the Python process!</h3>
+        <p id="pingResponse"></p>
+    </header>   
+
+
+    <button type="button" id="pingPython">ping</button>
+
+    <!-- <section>
         <div class="centered-container">
             <label class="margin-right">
                 Pick a .png or .jpg file:
-                <button onclick="onSelectButtonClick()" class="btn btn-primary">Select a File/Folder</button>
+                <input id="fileinput" type="file"/>
             </label>
         </div>
-    </section>
+    </section> -->
     <section class="centered-container">
         <div style="max-width: 550px">
             <canvas id="inputcanvas"></canvas>
         </div>           
     </section>
-    <script src="opencv_test.js" type="application/javascript"></script>
+    <script>
+        require('./index_script.js')
+    </script>
 </body>
-
-</html>
