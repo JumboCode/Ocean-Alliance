@@ -1,5 +1,3 @@
-# 10/14/19 Mon
-# Erica Zhang
 import cv2
 import os
 import numpy as np
