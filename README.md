@@ -3,6 +3,7 @@ Download the following:
 - VirtualBox
 - Vagrant
 - X11 Server for your system (xMing for Windows, xQuartz for MacOs); Search X11 forwarding for [system] for instructions.
+
 Check Trello for steps
 
 # Ocean-Alliance
