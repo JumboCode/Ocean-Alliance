@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
-    
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./columns.css">
     <!-- Bootstrap Optional JavaScript
          jQuery first, then Popper.js, then Bootstrap JS
          referencing https://www.ryadel.com/en/electron-jquery-bootstrap-project-add-npm/ -->
@@ -31,12 +32,40 @@
         document.write(process.versions.electron)
     </script>.
 
-    <header class="centered-text">
-        <h3>Ping the Python process!</h3>
-        <p id="pingResponse"></p>
-    </header>   
-
-
+<!--   Upload button code   -->
+   <div class="align-container">
+        <div class="split left">
+            <div class="centered">
+                <section>
+                    <label>
+                        Pick a single video to upload
+                    </label>
+                    <button class="btn" onclick="gotvideo()" class="btn-default" style="background-color:#55A5B1">
+                        <input id="fileinput" type="file" style="width:240px"/>
+                    </button>
+                </section>
+            </div>
+        </div>
+        <div class="split right">
+            <div class="centered">
+                <section>
+                    <label>
+                        Pick a folder to upload
+                    </label>
+                    <button class="btn" onclick="gotfolder()" class="btn-default" style="background-color:#55A5B1">
+                        <input id="fileinput" type="file" style="width:240px"/>
+                    </button>
+                </section>
+            </div>
+        </div>
+        <script>
+            function gotvideo () { alert('thanks for the video') }
+            function gotfolder () { alert('thanks for the folder') }
+        </script>
+    </div>
+     
+    <h3>Ping the Python process!</h3>
+    <p id="pingResponse"></p>
     <button type="button" id="pingPython">ping</button>
 
     <!-- <section>
@@ -47,11 +76,15 @@
             </label>
         </div>
     </section> -->
+    
     <section class="centered-container">
         <div style="max-width: 550px">
             <canvas id="inputcanvas"></canvas>
-        </div>           
+        </div>
     </section>
+</body>
+
+</html>
     <script>
         require('./index_script.js')
     </script>
