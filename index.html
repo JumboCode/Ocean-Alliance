@@ -32,10 +32,8 @@
         document.write(process.versions.electron)
     </script>.
 
-    <header class="centered-text">
-        <h3>opencv4nodejs electron example</h3>
-    </header>
-    <div class="align-container">
+<!--   Upload button code   -->
+   <div class="align-container">
         <div class="split left">
             <div class="centered">
                 <section>
@@ -65,12 +63,29 @@
             function gotfolder () { alert('thanks for the folder') }
         </script>
     </div>
+     
+    <h3>Ping the Python process!</h3>
+    <p id="pingResponse"></p>
+    <button type="button" id="pingPython">ping</button>
+
+    <!-- <section>
+        <div class="centered-container">
+            <label class="margin-right">
+                Pick a .png or .jpg file:
+                <input id="fileinput" type="file"/>
+            </label>
+        </div>
+    </section> -->
+    
     <section class="centered-container">
         <div style="max-width: 550px">
             <canvas id="inputcanvas"></canvas>
         </div>
     </section>
-    <script src="opencv_test.js" type="application/javascript"></script>
 </body>
 
 </html>
+    <script>
+        require('./index_script.js')
+    </script>
+</body>

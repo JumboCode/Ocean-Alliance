@@ -1,5 +1,13 @@
+# Vagrant Instructions
+Download the following:
+- VirtualBox
+- Vagrant
+- X11 Server for your system (xMing for Windows, xQuartz for MacOs); Search X11 forwarding for [system] for instructions.
+
+Check Trello for steps
+
 # Ocean-Alliance
-JumboCode 2019-2020 project for Ocean Alliance, led by Danielle Lan.
+JumboCode 2019-2020 project for Ocean Alliance.
 See tickets here: https://trello.com/b/ZgCHVH4n/ticket
 
 # Team Members
