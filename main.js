@@ -1,6 +1,6 @@
-const { app, BrowserWindow } = require('electron')
+const { ipcMain, dialog, app, BrowserWindow } = require('electron')
 const path = require('path')
-const JobQueue = require('.js/jobqueue.js')
+const JobQueue = require('./js/jobqueue.js')
 let jobQueue = new JobQueue()
 
 // global reference to the window object
@@ -59,6 +59,8 @@ function selectFiles (callbackfn) {
 }
 
 ipcMain.on('openFile', selectFiles)
+
+
 
 /*************************************************************
  * py process, code extracted from
