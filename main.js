@@ -15,13 +15,13 @@ var server = new zerorpc.Server({
   },
   progress: function (progress, reply) {
     // Do something with progress
-    console.log('  Progress: ' + progress)
+    console.log('Node.js zeroRPC: Progress: ' + progress)
     // Send the acknowledgement back to the client
     reply(null, 'Progress = ' + progress)
   },
   finished: function (reply) {
     // Do something now that we're finished
-    console.log('  Processing finished.')
+    console.log('Node.js zeroRPC: Processing finished.')
     // Send the acknowledgement back to the client
     reply(null, 'Finished.')
   }

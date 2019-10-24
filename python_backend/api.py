@@ -14,9 +14,6 @@ class PythonApi(object):
         return 'Python version {}, epoch time {}'.format(sys.version, time.time())
 
     def startWorking(self, input, output):
-        # print(c.hello("RPC"))
-        updateProgress(50)
-        finished()
         return 'Beginning work'
 
 def main():
@@ -30,12 +27,12 @@ def main():
 # Tell the Node.js server the current progress
 def updateProgress(progress):
     response = c.progress(progress)
-    print(response)
+    print("Response to progress call: " + response)
 
 # Tell the Node.js server that we're done processing
 def finished():
     response = c.finished()
-    print(response)
+    print("Response to finished call: " + response)
 
 if __name__ == '__main__':
     main()
