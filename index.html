@@ -2,6 +2,8 @@
 <html>
 ​
 <head>
+<script>window.$ = window.jQuery = require('jquery');</script>
+
 <title>My Example</title>
 ​
 <!-- CSS -->
@@ -42,34 +44,57 @@ body {
 background: #7bac10;
 }
 </style>
+
 </head>
 <body>
 ​
 <!-- HTML -->
-<video width="320" height="240" autoplay>
+<video width="320" height="240" controls>
   <source src="mov_bbb.mp4" type="video/mp4">
   <source src="mov_bbb.ogg" type="video/ogg">
 Your browser does not support the video tag.
 </video>
+
 <div class="myBox">
     <button name="button">Click me</button>
     <h2>Video Status</H2>
     <table id="Videos" style="width:100%">
       <tr>
-        <td><button name="button">Add New Video</button>  </td>
+        <td>
+            <div>
+                <input id="fileinput" type="file"/>
+                <!-- <button onclick=row()>Add New Video</button> -->
+
+            </div>
+
+
+        </td>
       </tr>
     </table>
-    <button onclick=row()>Add row</button>
     <script>
-    function row() {
+    $(document).ready(function(){
+        // console.log('hello')
+      $("#fileinput").click(function () {
+          // $("#fileinput").each(function() {
+          $('#fileinput').change(
+              function(e){
+                  row(e.target.files[0].name);
+              }
+              );
+    });
+})
+    </script>
+    <script>
+    function row(filename) {
         var MyTable =
             document.getElementById("Videos");
         // insert new row.
         var NewRow = MyTable.insertRow(0);
         var Newcell1 = NewRow.insertCell(0);
-        Newcell1.innerHTML = "<td><Button>Useless BUtton </Button></td>";
+        Newcell1.innerHTML = "<td><Button>" + filename + "</Button></td>";
     }
-</script>
+
+    </script>
 ​
 </div>
 ​

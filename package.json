@@ -21,6 +21,7 @@
     "electron-rebuild": "^1.8.6",
     "eslint-plugin-markdown": "^1.0.0",
     "htmlhint": "^0.11.0",
+    "jquery": "^3.4.1",
     "standard": "^14.3.1"
   },
   "dependencies": {
