@@ -1,5 +1,33 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
+const JobQueue = require('./js/jobqueue.js')
+const jobQueue = new JobQueue()
+var zerorpc = require('zerorpc')
+
+// Create zeroRPC client
+var client = new zerorpc.Client()
+client.connect('tcp://127.0.0.1:9105')
+
+// Create zeroRPC server
+var server = new zerorpc.Server({
+  hello: function (name, reply) {
+    reply(null, 'Hello, ' + name)
+  },
+  progress: function (progress, reply) {
+    // Do something with progress
+    console.log('  Progress: ' + progress)
+    // Send the acknowledgement back to the client
+    reply(null, 'Progress = ' + progress)
+  },
+  finished: function (reply) {
+    // Do something now that we're finished
+    console.log('  Processing finished.')
+    // Send the acknowledgement back to the client
+    reply(null, 'Finished.')
+  }
+})
+
+server.bind('tcp://127.0.0.1:9106')
 
 // global reference to the window object
 let win
@@ -44,6 +72,17 @@ app.on('activate', () => {
     createWindow()
   }
 })
+
+// Tell CV code to begin operating
+function startWorking (job) {
+  client.invoke('startWorking', job.input, job.output, function (error, res, more) {
+    if (error) {
+      console.log(error)
+      return
+    }
+    console.log(res)
+  })
+}
 
 /*************************************************************
  * py process, code extracted from
@@ -97,3 +136,7 @@ const exitPyProc = () => {
 
 app.on('ready', createPyProc)
 app.on('will-quit', exitPyProc)
+
+// TEST STUFF
+jobQueue.push('hi', 'bye')
+app.on('ready', () => { startWorking(jobQueue.pop()) })
