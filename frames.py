@@ -1,8 +1,3 @@
-
-# 10/14/19 Mon
-# Erica Zhang
-
-
 import cv2
 import os
 import numpy as np
@@ -14,12 +9,10 @@ cap = cv2.VideoCapture('/Users/erica/Desktop/Daffodil_1.mov')
 if (cap.isOpened() == False) :
  print ("Error opening video stream or file")
 
-
-
 success, frame = cap.read()
 count = 0
-#provide path to save video frames here
 
+#provide path to save video frames here
 path = '/Users/erica/Desktop/images'
 while success:
      count += 1
