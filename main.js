@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require('electron')
+var zerorpc = require("zerorpc");
 const path = require('path')
 
 // global reference to the window object
@@ -44,6 +45,10 @@ app.on('activate', () => {
     createWindow()
   }
 })
+
+// nodeJS zeroRPC connection
+var client = new zerorpc.Client();
+client.connect("tcp://127.0.0.1:4242");
 
 /*************************************************************
  * py process, code extracted from
