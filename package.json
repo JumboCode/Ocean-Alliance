@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "test": "standard && standard --plugin html *.html && htmlhint *.html",
-    "start": "electron ."
+    "start": "electron .",
+    "fix": "standard --fix"
   },
   "repository": {
     "type": "git",

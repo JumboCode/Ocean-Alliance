@@ -1,6 +1,4 @@
 # 10/6/19 Sun
-# Ocean Alliance
-# Erica Zhang
 import imutils
 import numpy as np
 import cv2

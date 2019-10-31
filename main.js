@@ -1,4 +1,5 @@
 const { ipcMain, dialog, app, BrowserWindow } = require('electron')
+var zerorpc = require('zerorpc')
 const path = require('path')
 const JobQueue = require('./js/jobqueue.js')
 let jobQueue = new JobQueue()
@@ -60,7 +61,9 @@ function selectFiles (callbackfn) {
 
 ipcMain.on('openFile', selectFiles)
 
-
+// nodeJS zeroRPC connection
+var client = new zerorpc.Client()
+client.connect('tcp://127.0.0.1:4242')
 
 /*************************************************************
  * py process, code extracted from
@@ -105,7 +108,7 @@ const createPyProc = () => {
     console.log('child process success on port ' + port)
   }
 }
-
+      
 const exitPyProc = () => {
   pyProc.kill()
   pyProc = null

@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "ubuntu/bionic64"
-  config.vagrant.plugins = "vagrant-vbguest"
+  #config.vagrant.plugins = "vagrant-vbguest"
 
   # config.ssh.forward_agent = true
   config.ssh.forward_x11 = true
