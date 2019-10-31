@@ -50,16 +50,21 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-function selectFiles (callbackfn) {
-  dialog.showOpenDialog(win, { properties: ['openFile', 
-                        'openDirectory', 'multiSelections'] }, (files) => {
-    if (typeof callbackfn === 'function' && callbackfn()) {
-      callbackfn(files)
-    }
-  })
-}
+// function selectFiles (callbackfn) {
+//   dialog.showOpenDialog(win, { properties: ['openFile', 
+//                         'openDirectory', 'multiSelections'] }, (files) => {
+//     if (typeof callbackfn === 'function' && callbackfn()) {
+//       callbackfn(files)
+//     }
+//   })
+// }
 
-ipcMain.on('openFile', selectFiles)
+// ipcMain.on('openFile', selectFiles)
+
+ipcMain.on('submit-job', (event, arg) => {
+    jobQueue.push(arg.input, arg.output);
+    console.log("Adding job: " + JSON.stringify(arg));
+});
 
 // nodeJS zeroRPC connection
 var client = new zerorpc.Client()
