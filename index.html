@@ -33,9 +33,19 @@
     </script>.
 
 <!--   Upload button code   -->
-   <div class="align-container">
-        <div class="split left">
-            <div class="centered">
+   
+
+<div class="align-container">
+    <div class="split left">
+        <div class="centered">
+                <section>
+                    <label>
+                        Debug: select output folder
+                    </label>
+                    <button class="btn" onclick="gotoutput()" class="btn-default" style="background-color:#55A5B1">
+                        <input id="fileoutput" type="file" style="width:240px" />
+                    </button>
+                </section>
                 <section>
                     <label>
                         Pick a single video to upload
@@ -61,6 +71,7 @@
         <script>
             function gotvideo () { alert('thanks for the video') }
             function gotfolder () { alert('thanks for the folder') }
+            function gotoutput () { alert('thanks for the output') }
         </script>
     </div>
      
