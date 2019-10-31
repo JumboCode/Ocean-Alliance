@@ -51,7 +51,7 @@
                         Pick a single video to upload
                     </label>
                     <button class="btn" onclick="gotvideo()" class="btn-default" style="background-color:#55A5B1">
-                        <input id="fileinput" type="file" style="width:240px"/>
+                        <input id="fileinput2" type="file" style="width:240px"/>
                     </button>
                 </section>
             </div>
@@ -66,12 +66,41 @@
                         <input id="fileinput" type="file" style="width:240px"/>
                     </button>
                 </section>
+		<!-- Submit button -->
+		<section>
+		    <label>
+		        Submit for processing
+		    </label>
+		    <button class="btn" onclick="submit()" class="btn-default" style="background-color:#55A5B1">
+		    </button>
+		</section>
             </div>
         </div>
         <script>
+	  const { ipcRenderer } = require('electron');
+	  
             function gotvideo () { alert('thanks for the video') }
             function gotfolder () { alert('thanks for the folder') }
             function gotoutput () { alert('thanks for the output') }
+	    function submit () {
+		// Get the input and output paths
+		var in_elt = document.getElementById('fileinput');
+		var out_elt = document.getElementById('fileoutput');
+		var in_path = in_elt.files[0].path;
+		var out_path = out_elt.files[0].path;
+		
+		if (!(in_path && out_path)) {
+		    alert('Please select an input and output folder.');
+		    return;
+		}
+
+                // Clear the input and output file fields
+		in_elt.value = '';
+		out_elt.value = '';
+
+		// Send the data to the backend
+		ipcRenderer.send('submit-job', {input: in_path, output: out_path});
+	    }
         </script>
     </div>
      
