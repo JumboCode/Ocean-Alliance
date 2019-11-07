@@ -6,7 +6,7 @@ window.onload = function () {
       }
     )
   })
-  
+
   function row (file) {
     var filename = file.name
     var MyTable =
@@ -14,7 +14,7 @@ window.onload = function () {
     // insert new row.
     var NewRow = MyTable.insertRow(0)
     var Newcell1 = NewRow.insertCell(0)
-    Newcell1.innerHTML = '<td><Button>' + filename + '</Button></td>'
+    Newcell1.innerHTML = '<td><Button class="button button2">' + filename + '</Button></td>'
     Newcell1.vidFile = file
     Newcell1.addEventListener('click', function () {
       playSelectedFile(file)
