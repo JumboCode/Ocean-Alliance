@@ -95,6 +95,19 @@ nav ul a {
   width: 100%;
 }
 
+.iconBtn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.iconBtn:hover {
+  background-color: RoyalBlue;
+}
+
 .button {
   background-color: #4CAF50; /* Green */
   border: none;
@@ -115,8 +128,16 @@ nav ul a {
   background-color: white;
   color: black;
   border: 2px solid #008CBA;
-  width: 275%;
-  height: 150px;
+  width: 100%;
+  height: 100px;
+}
+
+.buttonSmall {
+  background-color: white;
+  color: black;
+  border: 2px solid #008CBA;
+  width: 25%;
+  height: 64px;
 }
 
 .button2:hover {

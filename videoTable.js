@@ -14,10 +14,34 @@ window.onload = function () {
     // insert new row.
     var NewRow = MyTable.insertRow(0)
     var Newcell1 = NewRow.insertCell(0)
-    Newcell1.innerHTML = '<td><Button class="button button2">' + filename + '</Button></td>'
+    var PlayButton = document.createElement('Button')
+    PlayButton.innerHTML = '<i class="glyphicon glyphicon-play"/>'
+    PlayButton.className = 'iconBtn'
+    var DeleteButton = document.createElement('Button')
+    DeleteButton.innerHTML = '<i class="glyphicon glyphicon-trash"/>'
+    DeleteButton.className = 'iconBtn'
+    var ProcessButton = document.createElement('Button')
+    ProcessButton.innerHTML = '<i class="glyphicon glyphicon-refresh"> Process</i>'
+    ProcessButton.className = 'iconBtn'
+    var CoolContainer = document.createElement('div')
+    CoolContainer.className = 'button button2'
+    Newcell1.innerHTML = '<td></td>'
+    var FileName = document.createElement('div')
+    FileName.innerHTML = filename
+    CoolContainer.appendChild(FileName)
+    CoolContainer.appendChild(PlayButton)
+    CoolContainer.appendChild(ProcessButton)
+    CoolContainer.appendChild(DeleteButton)
+    Newcell1.appendChild(CoolContainer)
     Newcell1.vidFile = file
-    Newcell1.addEventListener('click', function () {
+    PlayButton.addEventListener('click', function () {
       playSelectedFile(file)
+    })
+    DeleteButton.addEventListener('click', function () {
+      MyTable.deleteRow(DeleteButton.parentNode.parentNode.rowIndex)
+    })
+    ProcessButton.addEventListener('click', function () {
+      processVideo(Newcell1.vidFile)
     })
   }
   var URL = window.URL || window.webkitURL
@@ -41,4 +65,8 @@ window.onload = function () {
     var fileURL = URL.createObjectURL(file)
     videoNode.src = fileURL
   }
+}
+
+function processVideo (file) {
+  alert('Processing ' + file.name + '\n')
 }
