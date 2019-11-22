@@ -18,6 +18,9 @@
 </head>
 
 <body>
+            <a href="waiting.html">Waiting page</a>
+            <a href="gallery.html">Gallery page</a>
+  
     <h1>Hello World!</h1>
     We are using node
     <script>
@@ -76,8 +79,10 @@
 		</section>
             </div>
         </div>
+        
+            <button class="waitingbutton" class="btn" class="btn-default" onclick="gotowaiting()">Waiting</button>
         <script>
-	  const { ipcRenderer } = require('electron');
+	      const { ipcRenderer, remote } = require('electron');
 	  
             function gotvideo () { alert('thanks for the video') }
             function gotfolder () { alert('thanks for the folder') }
@@ -101,6 +106,16 @@
 		// Send the data to the backend
 		ipcRenderer.send('submit-job', {input: in_path, output: out_path});
 	    }
+
+          console.log("code");
+      function gotowaiting() {
+          console.log("eee");
+          remote.getCurrentWindow().loadUrl('https://github.com');
+      }
+
+          const $ = require('jquery');
+          console.log($(".waitingbutton"));
+          $(".waitingbutton").click = gotowaiting;
         </script>
     </div>
      
