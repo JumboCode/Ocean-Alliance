@@ -7,7 +7,6 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="./columns.css">
     <!-- Bootstrap Optional JavaScript
          jQuery first, then Popper.js, then Bootstrap JS
          referencing https://www.ryadel.com/en/electron-jquery-bootstrap-project-add-npm/ -->
@@ -18,9 +17,9 @@
 </head>
 
 <body>
-            <a href="waiting.html">Waiting page</a>
-            <a href="gallery.html">Gallery page</a>
-  
+    <a href="waiting.html">Waiting page</a>
+    <a href="gallery.html">Gallery page</a>
+
     <h1>Hello World!</h1>
     We are using node
     <script>
@@ -35,112 +34,106 @@
         document.write(process.versions.electron)
     </script>.
 
-<!--   Upload button code   -->
-   
+    <!--   Upload button code   -->
 
-<div class="align-container">
-    <div class="split left">
-        <div class="centered">
-                <section>
-                    <label>
-                        Debug: select output folder
-                    </label>
-                    <button class="btn" onclick="gotoutput()" class="btn-default" style="background-color:#55A5B1">
-                        <input id="fileoutput" type="file" style="width:240px" />
-                    </button>
-                </section>
-                <section>
-                    <label>
-                        Pick a single video to upload
-                    </label>
-                    <button class="btn" onclick="gotvideo()" class="btn-default" style="background-color:#55A5B1">
-                        <input id="fileinput2" type="file" style="width:240px"/>
-                    </button>
-                </section>
-            </div>
+
+    <!-- <div class="align-container"> -->
+    <div class="container">
+        <!-- <div class="split left"> -->
+        <div class="col-6">
+
+            <label>
+                Debug: select output folder
+            </label>
+            <button class="btn btn-default" onclick="gotoutput()" style="background-color:#55A5B1">
+                <input id="fileoutput" type="file" style="width:240px" />
+            </button>
+
+            <label>
+                Pick a single video to upload
+            </label>
+            <button class="btn btn-default" onclick="gotvideo()" style="background-color:#55A5B1">
+                <input id="fileinput2" type="file" style="width:240px" />
+            </button>
+
         </div>
-        <div class="split right">
-            <div class="centered">
-                <section>
-                    <label>
-                        Pick a folder to upload
-                    </label>
-                    <button class="btn" onclick="gotfolder()" class="btn-default" style="background-color:#55A5B1">
-                        <input id="fileinput" type="file" style="width:240px"/>
-                    </button>
-                </section>
-		<!-- Submit button -->
-		<section>
-		    <label>
-		        Submit for processing
-		    </label>
-		    <button class="btn" onclick="submit()" class="btn-default" style="background-color:#55A5B1">
-		    </button>
-		</section>
-            </div>
+        <!-- <div class="split right"> -->
+        <div class="col-6">
+
+            <label>
+                Pick a folder to upload
+            </label>
+            <button class="btn btn-default" onclick="gotfolder()" style="background-color:#55A5B1">
+                <input id="fileinput" type="file" style="width:240px" />
+            </button>
+
+            <!-- Submit button -->
+
+            <label>
+                Submit for processing
+            </label>
+            <button class="btn btn-default" onclick="submit()" style="background-color:#55A5B1">Submit</button>
         </div>
-        
-            <button class="waitingbutton" class="btn" class="btn-default" onclick="gotowaiting()">Waiting</button>
+
+        <button class="waitingbutton btn btn-default" onclick="gotowaiting()">Waiting</button>
         <script>
-	      const { ipcRenderer, remote } = require('electron');
-	  
-            function gotvideo () { alert('thanks for the video') }
-            function gotfolder () { alert('thanks for the folder') }
-            function gotoutput () { alert('thanks for the output') }
-	    function submit () {
-		// Get the input and output paths
-		var in_elt = document.getElementById('fileinput');
-		var out_elt = document.getElementById('fileoutput');
-		var in_path = in_elt.files[0].path;
-		var out_path = out_elt.files[0].path;
-		
-		if (!(in_path && out_path)) {
-		    alert('Please select an input and output folder.');
-		    return;
-		}
+            const { ipcRenderer, remote } = require('electron');
+
+            function gotvideo() { alert('thanks for the video') }
+            function gotfolder() { alert('thanks for the folder') }
+            function gotoutput() { alert('thanks for the output') }
+            function submit() {
+                // Get the input and output paths
+                var in_elt = document.getElementById('fileinput');
+                var out_elt = document.getElementById('fileoutput');
+                var in_path = in_elt.files[0].path;
+                var out_path = out_elt.files[0].path;
+
+                if (!(in_path && out_path)) {
+                    alert('Please select an input and output folder.');
+                    return;
+                }
 
                 // Clear the input and output file fields
-		in_elt.value = '';
-		out_elt.value = '';
+                in_elt.value = '';
+                out_elt.value = '';
 
-		// Send the data to the backend
-		ipcRenderer.send('submit-job', {input: in_path, output: out_path});
-	    }
+                // Send the data to the backend
+                ipcRenderer.send('submit-job', { input: in_path, output: out_path });
+            }
 
-          console.log("code");
-      function gotowaiting() {
-          console.log("eee");
-          remote.getCurrentWindow().loadUrl('https://github.com');
-      }
+            console.log("code");
+            function gotowaiting() {
+                console.log("eee");
+                remote.getCurrentWindow().loadUrl('https://github.com');
+            }
 
-          const $ = require('jquery');
-          console.log($(".waitingbutton"));
-          $(".waitingbutton").click = gotowaiting;
+            const $ = require('jquery');
+            console.log($(".waitingbutton"));
+            $(".waitingbutton").click = gotowaiting;
         </script>
     </div>
-     
+
     <h3>Ping the Python process!</h3>
     <p id="pingResponse"></p>
     <button type="button" id="pingPython">ping</button>
 
-    <!-- <section>
+    <!-- 
         <div class="centered-container">
             <label class="margin-right">
                 Pick a .png or .jpg file:
                 <input id="fileinput" type="file"/>
             </label>
         </div>
-    </section> -->
-    
-    <section class="centered-container">
-        <div style="max-width: 550px">
-            <canvas id="inputcanvas"></canvas>
-        </div>
-    </section>
-</body>
+     -->
 
-</html>
+    <div style="max-width: 550px">
+        <canvas id="inputcanvas"></canvas>
+    </div>
+
     <script>
         require('./index_script.js')
     </script>
 </body>
+
+</html>
