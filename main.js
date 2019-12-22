@@ -1,8 +1,10 @@
 const { ipcMain, dialog, app, BrowserWindow } = require('electron')
 var zerorpc = require('zerorpc')
 const path = require('path')
-const JobQueue = require('./js/jobqueue.js')
+const JobQueue = require('./global_scripts/jobqueue.js')
 let jobQueue = new JobQueue()
+
+global.appRoot = path.resolve(__dirname);
 
 // global reference to the window object
 let win
