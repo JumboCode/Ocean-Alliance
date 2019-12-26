@@ -1,6 +1,7 @@
 import csv
 import re
 import numpy as np
+import os
 
 """
 This script takes in a path to a feature vector csv, and goes through each
@@ -9,37 +10,42 @@ Green, std of red) and normalize the data, then output the normalized csv of
 feature vectors
 """
 
-inputCSV = '/Users/erica/Desktop/Daffodil_1_images_fv.csv'
 def normalize(x, min_val, max_val):
     return (x - min_val) / (max_val - min_val)
 
-with open(inputCSV, 'r') as csv_file:
-    reader = csv.reader(csv_file, delimiter=',')
-    next(reader) #skip useless repetitive header data, fv to csv script could be
-                # improved to avoid this issue
-    matrix = []
-    for row in reader:
-        row = np.array(list(row))
-        matrix.append(row)
-    matrix = np.vstack(matrix)  # multidimensional nparray
-    matrix = matrix.T
-    data_categories = matrix.shape[0]
+path = 'some/path/to/csv/files'
+# example: inputCSV = '/Users/erica/Desktop/Daffodil_1_images_fv.csv'
+for inputCSV in os.scandir(path): # FYI requires Python 3
+    with open(inputCSV, 'r') as csv_file:
+        reader = csv.reader(csv_file, delimiter = ',')
+        next(reader) # skip useless repetitive header data, fv to csv script could be
+                     #  improved to avoid this issue
+        matrix = []
+        for row in reader:
+            row = np.array(list(row))
+            matrix.append(row)
+        matrix = np.vstack(matrix)  # multidimensional nparray
+        matrix = matrix.T
+        data_categories = matrix.shape[0]
 
-    i = 1 #iteration over rows
-    for row in matrix[1:]: #skip first row of matrix are the names of images
-        row = row.astype(np.float)
-        max_val = np.max(row)
-        min_val = np.min(row)
-        if max_val != min_val:
-            for j in range(len(row)):
-                x = row[j]
-                row[j] = normalize(x, min_val, max_val)
-                j += 1
-        matrix[i] = row #overwrite data
-        i += 1
+        i = 1 # iteration over rows
+        for row in matrix[1:]: # skip first row of matrix are the names of images
+            row = row.astype(np.float)
+            max_val = np.max(row)
+            min_val = np.min(row)
+            if max_val != min_val:
+                for j in range(len(row)):
+                    x = row[j]
+                    row[j] = normalize(x, min_val, max_val)
+                    j += 1
+            else:
+                row[:] = 0.5
+            matrix[i] = row # overwrite data
+            i += 1
 
-    matrix = matrix.T
-    np.savetxt("/Users/erica/Desktop/Daffodil_1_images_fv_normalized.csv", matrix, delimiter=",", fmt='%s')
+        matrix = matrix.T
+        # np.savetxt('/Users/erica/Desktop/Daffodil_1_images_fv_normalized.csv', matrix, delimiter = ",", fmt = '%s')
+        np.savetxt(path + '/' + inputCSV.name[0:-4] + '_norm.csv', matrix, delimiter = ',', fmt = '%s')
 
 """ Potentially helpful test dummy csv_file
 ,1,2,3,4,5,6
