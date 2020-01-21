@@ -46,6 +46,8 @@ for inputCSV in os.scandir(path): # FYI requires Python 3
         matrix = matrix.T
         # np.savetxt('/Users/erica/Desktop/Daffodil_1_images_fv_normalized.csv', matrix, delimiter = ",", fmt = '%s')
         np.savetxt(path + '/' + inputCSV.name[0:-4] + '_norm.csv', matrix, delimiter = ',', fmt = '%s')
+        # this should also work with import pandas as pd:
+        # (pd.DataFrame(data = matrix[1:].T, index = img_names)).to_csv(path + '/' + inputCSV.name[0:-4] + '_norm.csv', header = False)
 
 """ Potentially helpful test dummy csv_file
 ,1,2,3,4,5,6
