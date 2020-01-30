@@ -64,8 +64,11 @@ app.on('activate', () => {
 // ipcMain.on('openFile', selectFiles)
 
 ipcMain.on('submit-job', (event, arg) => {
-    jobQueue.push(arg.input, arg.output);
-    console.log("Adding job: " + JSON.stringify(arg));
+
+    console.log('received job')
+    console.log(arg)
+
+    // jobQueue.push(arg.in[0], arg.out[0]);
 });
 
 // nodeJS zeroRPC connection
