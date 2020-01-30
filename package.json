@@ -9,6 +9,7 @@
     "fix": "standard --fix",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
+    "allDist": "electron-builder -mwl",
     "postinstall": "electron-builder install-app-deps"
   },
   "build": {
@@ -41,7 +42,10 @@
     "type": "git",
     "url": "git+https://github.com/JumboCode/Ocean-Alliance.git"
   },
-  "author": "",
+  "author": {
+    "name": "",
+    "email": "hlan01@cs.tufts.edu"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/JumboCode/Ocean-Alliance/issues"
