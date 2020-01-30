@@ -2,9 +2,9 @@ const { ipcMain, dialog, app, BrowserWindow } = require('electron')
 var zerorpc = require('zerorpc')
 const path = require('path')
 const JobQueue = require('./global_scripts/jobqueue.js')
-let jobQueue = new JobQueue()
+const jobQueue = new JobQueue()
 
-global.appRoot = path.resolve(__dirname);
+global.appRoot = path.resolve(__dirname)
 
 // global reference to the window object
 let win
@@ -53,7 +53,7 @@ app.on('activate', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 // function selectFiles (callbackfn) {
-//   dialog.showOpenDialog(win, { properties: ['openFile', 
+//   dialog.showOpenDialog(win, { properties: ['openFile',
 //                         'openDirectory', 'multiSelections'] }, (files) => {
 //     if (typeof callbackfn === 'function' && callbackfn()) {
 //       callbackfn(files)
@@ -64,12 +64,11 @@ app.on('activate', () => {
 // ipcMain.on('openFile', selectFiles)
 
 ipcMain.on('submit-job', (event, arg) => {
+  console.log('received job')
+  console.log(arg)
 
-    console.log('received job')
-    console.log(arg)
-
-    // jobQueue.push(arg.in[0], arg.out[0]);
-});
+  // jobQueue.push(arg.in[0], arg.out[0]);
+})
 
 // nodeJS zeroRPC connection
 var client = new zerorpc.Client()
@@ -118,7 +117,7 @@ const createPyProc = () => {
     console.log('child process success on port ' + port)
   }
 }
-      
+
 const exitPyProc = () => {
   pyProc.kill()
   pyProc = null
