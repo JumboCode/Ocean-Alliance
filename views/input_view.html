@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Input</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Bootstrap Optional JavaScript
+         jQuery first, then Popper.js, then Bootstrap JS
+         referencing https://www.ryadel.com/en/electron-jquery-bootstrap-project-add-npm/ -->
+    <script>
+        require('popper.js')
+        require('bootstrap')
+    </script>
+</head>
+<body>
+    <p style="background-color: cadetblue;">
+        [DEBUG] Input view: 
+        <a href="progress_view.html">Progress </a>
+        <a href="gallery_view.html">Gallery</a>
+    </p>
+    
+    <div class="container">
+        <div class="row" id="upperPadding" style="height: 100px;"></div>
+        <div id="inputRow" class="row">
+            <div class="col-2"></div>
+            <button id="sourceFile" type="button" class="btn btn-primary col-3">Select source video file</button>
+            <div class="col-2" style="text-align: center;">or</div>
+            <button id="sourceFolder" type="button" class="btn btn-primary col-3">Select source video folder</button>
+            <div class="col-2"></div>
+        </div>
+        <div id="outputRow" class="row" hidden>
+            <button id="destFolder" type="button" class="btn btn-primary col-3" style="margin: auto;">Select destination folder</button>
+        </div>
+        <div class="row" id="lowerPadding"></div>
+
+    </div>
+    <script>
+        require('./scripts/input_script.js')
+    </script>
+</body>
+</html>
