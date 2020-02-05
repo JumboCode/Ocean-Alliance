@@ -5,6 +5,7 @@ import pandas as pd
 import csv
 import re
 
+# A FOLDER WITH VIDEOS IS REQUIRED FOR SCRIPT TO RUN
 # provide video path here
 # ex: '/Users/erica/Desktop/Daffodil_1.mov'
 video_path = '../videos/'
@@ -16,7 +17,7 @@ frame_path = '../images/'
 fv_path = '../fv_CSVs/'
 norm_path = '../fv_norm_CSVs/'
 
-for directory in [video_path, frame_path, fv_path, norm_path]:
+for directory in [frame_path, fv_path, norm_path]:
     if not os.path.exists(directory):
         os.makedirs(directory)
 
