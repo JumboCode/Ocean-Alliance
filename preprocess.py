@@ -16,6 +16,10 @@ frame_path = '../images/'
 fv_path = '../fv_CSVs/'
 norm_path = '../fv_norm_CSVs/'
 
+for directory in [video_path, frame_path, fv_path, norm_path]:
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+
 for video in os.scandir(video_path):
     print(video.name)
     cap = cv2.VideoCapture(video_path + video.name)
