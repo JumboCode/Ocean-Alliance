@@ -1,5 +1,6 @@
 const { ipcMain, dialog, app, BrowserWindow } = require('electron')
-var zerorpc = require('zerorpc')
+// var zerorpc = require('zerorpc')
+const net = require('net')
 const path = require('path')
 const JobQueue = require('./global_scripts/jobqueue.js')
 let jobQueue = new JobQueue()
@@ -61,7 +62,6 @@ app.on('activate', () => {
 //   })
 // }
 
-// ipcMain.on('openFile', selectFiles)
 
 ipcMain.on('submit-job', (event, arg) => {
 
@@ -72,8 +72,45 @@ ipcMain.on('submit-job', (event, arg) => {
 });
 
 // nodeJS zeroRPC connection
-var client = new zerorpc.Client()
-client.connect('tcp://127.0.0.1:4242')
+// var client = new zerorpc.Client()
+// client.connect('tcp://127.0.0.1:4242')
+
+// Handle incoming python communications
+const server = net.createServer((connection) => {
+  console.log("Connection from Python client established.");
+
+    connection.on('end', () => {
+        console.log('Client disconnected.');
+    });
+
+    connection.on('data', (data) => {
+      str_data = data.toString();
+      // TODO : USE DATA HERE
+    })
+});
+
+server.listen(5729, () => {
+    console.log("Listening on port 5729.")
+});
+console.log("Started listening, past listen() call");
+
+// Send outgoing communications to python
+const client = net.createConnection({port: 5728}, () => {
+    console.log("Connection to server established.");
+});
+
+// On data receive
+client.on('data', (data) => {
+    console.log("Receiving data: ");
+    console.log(data.toString());
+});
+
+// On connection end
+client.on('end', () => {
+    console.log('Disconnected from Python server.');
+});
+
+client.write("1 EXAMPLE")
 
 /*************************************************************
  * py process, code extracted from
