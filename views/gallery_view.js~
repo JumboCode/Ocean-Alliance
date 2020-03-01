@@ -1,0 +1,13 @@
+var inputFiles = [];
+inputFiles[0] = "I am  string";
+inputFiles[1] = "I am also a string";
+
+window.onload = function () {
+    for (var i = 0; i < inputFiles.length; i++) {
+	var row = document.createElement("p");
+	row.appendChild(inputFiles[i]);
+
+	var element = document.getElementByClass("row");
+	element.appendChild(row);
+    }
+}

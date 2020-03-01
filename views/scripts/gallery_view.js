@@ -14,10 +14,11 @@ window.onload = function () {
 
 	var element = document.getElementById("row");
 	document.body.insertBefore(row, element);
+        console.log(document.getElementById("row").id);
     }
 }
 $(document).ready(function() {
     $ ( "body" ).click(function( event ) {
-      $( "#squares" ).html( "clicked: " + event.target.nodeName );
+      $( "#squares" ).html( "clicked: " + this.id );
     });
 });
