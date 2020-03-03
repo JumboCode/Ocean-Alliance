@@ -99,10 +99,21 @@ const client = net.createConnection({port: 5728}, () => {
     console.log("Connection to server established.");
 });
 
-// On data receive
+// On incoming message
 client.on('data', (data) => {
     console.log("Receiving data: ");
     console.log(data.toString());
+
+    str_data = data.toString();
+
+    // Message is a job status
+    if str_data[0] == '1' {
+    	console.log("Job status: " + str_data.slice(1));
+    }
+    // Message is a finished filename
+    else if str_data[0] == '2' {
+    	console.log("Finished job " + str_data.slice(1));
+    }
 });
 
 // On connection end
@@ -110,7 +121,13 @@ client.on('end', () => {
     console.log('Disconnected from Python server.');
 });
 
-client.write("1 EXAMPLE")
+function startJob(filename) {
+	client.write("0" + filename);
+}
+
+function requestStatus(filename) {
+	client.write("1" + filename);
+}
 
 /*************************************************************
  * py process, code extracted from
