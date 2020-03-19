@@ -5,14 +5,18 @@ const userPath = (electron.app || electron.remote.app).getPath('appData') +
                  path.sep + 'jobqueue.json'
 
 class JobQueue {
+
+  jsonPath
   // constructor
   // Description: Construct a JobQueue object.
   //              NOTE: you should only use a single JobQueue object at once,
   //                    since all JobQueue objects sync to the same file.
   // Parameters:  n/a
   // Returns:     A JobQueue object.
-  constructor () {
-    if (fs.existsSync(userPath)) {
+  constructor (filename) {
+    jsonPath = userPath + filename + '.json'
+
+    if (fs.existsSync(jsonPath)) {
       this.data = this.readFromDisk()
     } else {
       this.data = []
@@ -73,12 +77,12 @@ class JobQueue {
 
   // Gets the current JobQueue stored on disk.
   readFromDisk () {
-    return JSON.parse(fs.readFileSync(userPath))
+    return JSON.parse(fs.readFileSync(jsonPath))
   }
 
   // Writes the current JobQueue to disk.
   syncToDisk () {
-    fs.writeFileSync(userPath, JSON.stringify(this.data))
+    fs.writeFileSync(jsonPath, JSON.stringify(this.data))
   }
 }
 
